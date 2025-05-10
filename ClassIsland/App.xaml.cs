@@ -698,8 +698,12 @@ public partial class App : AppBase, IAppHost
         Logger.LogInformation("初始化应用。");
 
         TransitionAssist.DisableTransitionsProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(Settings.IsTransientDisabled));
+
+        // 禁用提示窗口和弹出菜单的阴影
+        ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(ToolTip), new FrameworkPropertyMetadata(0));
+        Popup.PopupAnimationProperty.OverrideMetadata(typeof(Popup), new FrameworkPropertyMetadata(PopupAnimation.None));
+
         IThemeService.IsTransientDisabled = Settings.IsTransientDisabled;
-        IThemeService.IsWaitForTransientDisabled = Settings.IsWaitForTransientDisabled;
         if (Settings.IsSplashEnabled && !ApplicationCommand.Quiet)
         {
             var spanShowSplash = spanLaunching.StartChild("startup-show-splash");
