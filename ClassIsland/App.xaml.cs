@@ -699,7 +699,7 @@ public partial class App : AppBase, IAppHost
 
         TransitionAssist.DisableTransitionsProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(Settings.IsTransientDisabled));
 
-        // 禁用提示窗口和弹出菜单的阴影
+        // 禁用提示窗口和弹出菜单的阴影 macOS特调！
         ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(ToolTip), new FrameworkPropertyMetadata(0));
         Popup.PopupAnimationProperty.OverrideMetadata(typeof(Popup), new FrameworkPropertyMetadata(PopupAnimation.None));
 
